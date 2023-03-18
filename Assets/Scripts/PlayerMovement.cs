@@ -67,6 +67,9 @@ public class PlayerMovement : MonoBehaviour
         Vector2 climbVelocity = new Vector2(myRigdbody.velocity.x, moveInput.y * climbingSpeed);
         myRigdbody.velocity = climbVelocity;
         myRigdbody.gravityScale = 0f;
+
+        bool playerHasVerticalSpeed = MathF.Abs(myRigdbody.velocity.y) > Mathf.Epsilon;
+        myAnimator.SetBool("IsClimbing", playerHasVerticalSpeed);
     }
 
     void OnMove(InputValue value)
