@@ -11,20 +11,27 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float playerSpeed = 1f;
     [SerializeField] float jumpSpeed = 1f;
     [SerializeField] float climbingSpeed = 1f;
+
+    
     
     Rigidbody2D myRigdbody;
     Animator myAnimator;
-    CapsuleCollider2D myCapsuleCollider2D;
-
+    CapsuleCollider2D myBodyCollider;
+    BoxCollider2D myFeetCollider;
+    PlayerInput input;
     float gravityScaleAtStart;
+    bool isAlive = true;
 
     // Start is called before the first frame update
     void Start()
     {
         myRigdbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
-        myCapsuleCollider2D = GetComponent<CapsuleCollider2D>();
+        myBodyCollider = GetComponent<CapsuleCollider2D>();
+        myFeetCollider = GetComponent<BoxCollider2D>();
         gravityScaleAtStart = myRigdbody.gravityScale;
+
+        input = GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame
@@ -58,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void ClimbLadder()
     {
-        if (!myCapsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+        if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
         {
             Debug.Log("nie taczing climbing");
             myRigdbody.gravityScale = gravityScaleAtStart;
@@ -74,12 +81,11 @@ public class PlayerMovement : MonoBehaviour
 
     void OnMove(InputValue value)
     {
-        moveInput = value.Get<Vector2>();
-        
+        moveInput = value.Get<Vector2>();       
     }
     void OnJump(InputValue value)
     {
-        if (!myCapsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground"))) 
+        if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) 
         {
             Debug.Log("nie taczing");
             return;
@@ -88,5 +94,19 @@ public class PlayerMovement : MonoBehaviour
         {         
             myRigdbody.velocity += new Vector2(0f, jumpSpeed); 
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {       
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        isAlive = false;
+        input.DeactivateInput();
     }
 }

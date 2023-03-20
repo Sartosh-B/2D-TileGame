@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7687742905674151637}
   - component: {fileID: 4375953930639672817}
   - component: {fileID: 6198935362295916714}
+  - component: {fileID: 6553348465835637349}
   m_Layer: 0
   m_Name: Ginger (Player)
   m_TagString: Untagged
@@ -95,7 +96,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1382576421
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -2021157717, guid: 436ede06edf5e3e4d883cdb83c4ccd5a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -142,8 +143,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.06}
-  m_Size: {x: 0.48, y: 0.9}
+  m_Offset: {x: 0, y: -0.048764646}
+  m_Size: {x: 0.48, y: 0.87752926}
   m_Direction: 0
 --- !u!114 &6198935362295916714
 MonoBehaviour:
@@ -175,3 +176,29 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!61 &6553348465835637349
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5382971352860060663}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.007022023, y: -0.45362377}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.41295755, y: 0.09275246}
+  m_EdgeRadius: 0
