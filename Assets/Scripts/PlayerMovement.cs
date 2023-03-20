@@ -12,9 +12,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpSpeed = 1f;
     [SerializeField] float climbingSpeed = 1f;
     [SerializeField] Vector2 deathKick = new Vector2(10f, 10f);
+    [SerializeField] GameObject bullet;
+    [SerializeField] Transform gun;
 
-    
-    
+
     Rigidbody2D myRigdbody;
     Animator myAnimator;
     CapsuleCollider2D myBodyCollider;
@@ -23,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
     float gravityScaleAtStart;
     bool isAlive = true;
 
-    // Start is called before the first frame update
     void Start()
     {
         myRigdbody = GetComponent<Rigidbody2D>();
@@ -35,7 +35,6 @@ public class PlayerMovement : MonoBehaviour
         input = GetComponent<PlayerInput>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!isAlive) { return; }
@@ -43,9 +42,8 @@ public class PlayerMovement : MonoBehaviour
         FlipSprite();
         ClimbLadder();
         Die();
-    }
 
-   
+    }
 
     void FlipSprite()
     {
@@ -53,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
         if (playerHasHorizontalSpeed)
         {
             transform.localScale = new Vector2(Mathf.Sign(myRigdbody.velocity.x), 1f);
-        }       
+        }
     }
 
     void Run()
@@ -63,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
 
         bool playerHasHorizontalSpeed = MathF.Abs(myRigdbody.velocity.x) > Mathf.Epsilon;
         myAnimator.SetBool("IsRunning", playerHasHorizontalSpeed);
-       
+
     }
 
     private void ClimbLadder()
@@ -85,24 +83,28 @@ public class PlayerMovement : MonoBehaviour
     void OnMove(InputValue value)
     {
         if (!isAlive) { return; }
-        moveInput = value.Get<Vector2>();       
+        moveInput = value.Get<Vector2>();
     }
     void OnJump(InputValue value)
     {
         if (!isAlive) { return; }
-        if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) 
+        if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             Debug.Log("nie taczing");
             return;
         }
         if (value.isPressed)
-        {         
-            myRigdbody.velocity += new Vector2(0f, jumpSpeed); 
+        {
+            myRigdbody.velocity += new Vector2(0f, jumpSpeed);
         }
+    }
+    void OnFire(InputValue value)
+    {
+        Instantiate(bullet, gun.position, transform.rotation);
     }
     void Die()
     {
-        if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy")))
+        if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy", "Hazards")))
         {
             Debug.Log("enemy touched");
             isAlive = false;

@@ -17,8 +17,8 @@ TagManager:
   - Background
   - Bouncing
   - Enemy
-  - 
-  - 
+  - Hazards
+  - Bullets
   - 
   - 
   - 
@@ -49,6 +49,9 @@ TagManager:
     locked: 0
   - name: Platforms
     uniqueID: 2037284907
+    locked: 0
+  - name: Hazards
+    uniqueID: 1908262359
     locked: 0
   - name: Climbing
     uniqueID: 3604730061
