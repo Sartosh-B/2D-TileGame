@@ -14,13 +14,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Vector2 deathKick = new Vector2(10f, 10f);
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gun;
+    
 
 
     Rigidbody2D myRigdbody;
     Animator myAnimator;
     CapsuleCollider2D myBodyCollider;
     BoxCollider2D myFeetCollider;
-    PlayerInput input;
+    //PlayerInput input;
+    GameSesion gameSesion;
+
     float gravityScaleAtStart;
     bool isAlive = true;
 
@@ -31,8 +34,9 @@ public class PlayerMovement : MonoBehaviour
         myBodyCollider = GetComponent<CapsuleCollider2D>();
         myFeetCollider = GetComponent<BoxCollider2D>();
         gravityScaleAtStart = myRigdbody.gravityScale;
+        gameSesion = FindObjectOfType<GameSesion>();
 
-        input = GetComponent<PlayerInput>();
+        //input = GetComponent<PlayerInput>();
     }
 
     void Update()
@@ -110,6 +114,7 @@ public class PlayerMovement : MonoBehaviour
             isAlive = false;
             myAnimator.SetTrigger("Dying");
             myRigdbody.velocity += deathKick;
+            gameSesion.ProcessPlayerDeath();
         }
     }
 }
