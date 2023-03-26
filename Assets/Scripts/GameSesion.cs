@@ -53,10 +53,9 @@ public class GameSesion : MonoBehaviour
 
     private void TakeLife()
     {
-        playerLives -= 1;
-        livesText.text = playerLives.ToString();
+        playerLives -= 1;       
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        livesText.text = playerLives.ToString();
+        livesText.text = playerLives.ToString();        
     }
 
     private void ResetGameSession()
