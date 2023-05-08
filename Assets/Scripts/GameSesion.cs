@@ -39,6 +39,7 @@ public class GameSesion : MonoBehaviour
         if(playerLives > 1)
         {
             TakeLife();
+            Debug.Log("Take life proceed");
         }
         else
         {
@@ -53,7 +54,8 @@ public class GameSesion : MonoBehaviour
 
     private void TakeLife()
     {
-        playerLives -= 1;       
+        Debug.Log("Take life executed");
+        playerLives--;       
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         livesText.text = playerLives.ToString();        
     }

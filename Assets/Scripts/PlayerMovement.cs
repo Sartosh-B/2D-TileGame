@@ -71,8 +71,7 @@ public class PlayerMovement : MonoBehaviour
     private void ClimbLadder()
     {
         if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
-        {
-            Debug.Log("nie taczing climbing");
+        {            
             myRigdbody.gravityScale = gravityScaleAtStart;
             return;
         }
@@ -93,8 +92,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isAlive) { return; }
         if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
-        {
-            Debug.Log("nie taczing");
+        {         
             return;
         }
         if (value.isPressed)
