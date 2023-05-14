@@ -8132,6 +8132,25 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1650367629 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 99116945544200610, guid: 4f6bc5ccf8911ea43a5657145262aaed, type: 3}
+  m_PrefabInstance: {fileID: 8994322865931778007}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1650367633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650367629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29367a1150a52d84092a92a0181bb5f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heartPrefab: {fileID: 6232356888741404603, guid: b5c341940f4094c419aac38e9d26512d, type: 3}
+  nextHeartOffset: 40
 --- !u!4 &1692139588 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1995185933265004249, guid: 9aeb62a2716573f48860a49119ef223a, type: 3}
@@ -13180,7 +13199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7636222200094328296, guid: 28250474d072aef4f88d3e446d941270, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.9846597
+      value: 3.9846594
       objectReference: {fileID: 0}
     - target: {fileID: 7636222200094328296, guid: 28250474d072aef4f88d3e446d941270, type: 3}
       propertyPath: m_LocalPosition.y
@@ -13263,6 +13282,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 99116945544200610, guid: 4f6bc5ccf8911ea43a5657145262aaed, type: 3}
+      propertyPath: m_Name
+      value: LifeUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1977880727146768527, guid: 4f6bc5ccf8911ea43a5657145262aaed, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1977880727146768527, guid: 4f6bc5ccf8911ea43a5657145262aaed, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1977880727146768527, guid: 4f6bc5ccf8911ea43a5657145262aaed, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964343517274334668, guid: 4f6bc5ccf8911ea43a5657145262aaed, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964343517274334668, guid: 4f6bc5ccf8911ea43a5657145262aaed, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8994322865529234808, guid: 4f6bc5ccf8911ea43a5657145262aaed, type: 3}
       propertyPath: m_Camera
       value: 

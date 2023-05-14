@@ -12,7 +12,13 @@ public class GameSesion : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI livesText;
+
+    LifeUI lifeUI;
     
+    public int GetPlayerLives()
+    {
+        return playerLives;
+    }
 
     private void Awake()
     {
@@ -30,6 +36,7 @@ public class GameSesion : MonoBehaviour
 
     private void Start()
     {
+        lifeUI = FindObjectOfType<LifeUI>();
         livesText.text = playerLives.ToString();
         scoreText.text = score.ToString();
     }
@@ -57,7 +64,8 @@ public class GameSesion : MonoBehaviour
         Debug.Log("Take life executed");       
         playerLives--;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        livesText.text = playerLives.ToString();        
+        livesText.text = playerLives.ToString();
+        lifeUI.UpdateLifeUI(playerLives);
     }
 
     private void ResetGameSession()
