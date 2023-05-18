@@ -1,41 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LifeUI : MonoBehaviour
 {
-    int playerLives;
+    public int maxPlayerLives;
+    //int playerLives;
 
-    public GameObject heartPrefab;
-    public float nextHeartOffset = 40f;
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
 
     GameSesion gameSesion;
-
-    void Start()
+    private void Start()
     {
-        gameSesion = FindObjectOfType<GameSesion>();
-        playerLives = gameSesion.GetPlayerLives();
-        UpdateLifeUI(playerLives);
+        //gameSesion = FindObjectOfType<GameSesion>();
     }
     public void UpdateLifeUI(int playerLives)
-    {
-        //List<GameObject> hearts = new List<GameObject>();
-
-        //foreach (GameObject)
-
-        for (int i = 0; i < playerLives; i++)
+    {        
+        //playerLives = gameSesion.GetPlayerLives();
+        for (int i = 0; i < hearts.Length; i++)
         {
-            GameObject obj = Instantiate(heartPrefab, transform);
-            RectTransform rectTransform = obj.GetComponent<RectTransform>();
-            rectTransform.anchoredPosition += new Vector2(i*nextHeartOffset, 0);
+            if(i < playerLives)
+            {
+                hearts[i].sprite = fullHeart;
+            }
+            else
+            {
+                hearts[i].sprite = emptyHeart;
+            }
+
+            if(i < maxPlayerLives)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
         }
     }
-    /*public void ResetLifeUI()
-    {
-        FindObjectsByType<life>
-    }*/
-
-    
-
-
 }
