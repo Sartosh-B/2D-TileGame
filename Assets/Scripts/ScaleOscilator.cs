@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ScaleOscilator : MonoBehaviour
 {
-    public Vector2 minScale = new Vector2(0.5f, 0.5f);   // Minimalne skale x i y
-    public Vector2 maxScale = new Vector2(2f, 2f);       // Maksymalne skale x i y
-    public float period = 2f;                             // Okres czasu oscylacji w sekundach
+    public Vector2 minScale = new Vector2(0.5f, 0.5f);   
+    public Vector2 maxScale = new Vector2(2f, 2f);       
+    public float period = 2f;                             
 
     private Vector3 initialScale;                        // Pocz¹tkowa skala obiektu
     private float time;

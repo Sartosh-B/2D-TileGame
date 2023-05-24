@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class WalkingParticle : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    ParticleSystem walkParticle;
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        
+        walkParticle.Play();
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionExit2D(Collision2D other)
     {
-        
+        walkParticle.Stop();
     }
 }
